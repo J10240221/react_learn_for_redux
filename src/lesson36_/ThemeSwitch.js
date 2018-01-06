@@ -23,18 +23,6 @@ class ThemeSwitch extends Component {
       this.setState({themeColor: state.themeColor});
    }
 
-   _changeColor() {
-      const {store} = this.context;
-      const {dispatch} = store;
-      const action = {
-         type: 'CHANGE_COLOR',
-         themeColor: 'yellow',
-      };
-      dispatch(action);
-      const state = store.getState();
-      this.setState({themeColor: state.themeColor});
-   }
-
    // dispatch action 去改变颜色
    handleSwitchColor(color) {
       const {store} = this.context;
