@@ -1,26 +1,28 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Header from './lesson36_/Header';
 import Content from './lesson36_/Content';
 import './index.css'
 
+import { Provider } from './lesson36_/react-redux';
+
 class Index extends Component {
 
-   static childContextTypes = {
-      store: PropTypes.object
-   };
+   // static childContextTypes = {
+   //    store: PropTypes.object
+   // };
 
-   getChildContext () {
-      const store = createStore(themeReducer);
-      return { store };
-   }
+   // getChildContext () {
+   //    const store = createStore(themeReducer);
+   //    return { store };
+   // }
 
    render() {
       return (
          <div>
-            <Header/>
-            <Content/>
+            <Header />
+            <Content />
          </div>
       )
    }
@@ -53,9 +55,9 @@ const themeReducer = (state, action) => {
    }
 };
 
-
-
 ReactDOM.render(
-   <Index/>,
+   <Provider store={createStore(themeReducer)}>
+      <Index />
+   </Provider>,
    document.getElementById('root')
 );
